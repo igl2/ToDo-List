@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash");
 const dotenv = require("dotenv");
+dotenv.config();
+const url = process.env.MONGOLAB_URI;
 
 const app = express();
 
@@ -13,7 +15,9 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect("");
+mongoose.connect(url);
+
+
 
 const itemsSchema = {
   name: String
